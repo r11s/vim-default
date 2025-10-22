@@ -1,0 +1,16 @@
+# Ordner, die nicht in die VSIX sollen
+.vscode/
+.github/
+.gitignore
+src/
+node_modules/
+scripts/
+tests/
+assets/*.psd
+**/.DS_Store
+
+# Git/Build-Artefakte
+.git/
+*.vsix
+
+

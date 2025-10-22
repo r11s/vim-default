@@ -1,0 +1,5 @@
+# Node / build stuff
+node_modules/
+.vscode/
+src
+*.vsix

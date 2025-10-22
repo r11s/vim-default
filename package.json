@@ -1,0 +1,61 @@
+{
+  "name": "vim-default",
+  "displayName": "Vim Default (Port + 6-Color)",
+  "description": "Faithful ports of Vim's built-in 'default' colorscheme — both the pure version (no colors defined) and a 6-color variant matching classic Vim syntax colors.",
+  "version": "1.0.1",
+  "publisher": "r11s",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Themes"],
+  "extensionKind": ["ui"],
+  "galleryBanner": {
+    "color": "#DDDDDD",
+    "theme": "light"
+  },
+  "icon": "assets/icon.png",
+  "license": "Vim License",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/r11s/vim-default-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/r11s/vim-default-vscode/issues"
+  },
+  "homepage": "https://github.com/r11s/vim-default-vscode",
+  "qna": "marketplace",
+  "contributes": {
+    "themes": [
+      {
+        "label": "Vim Default (Port)",
+        "uiTheme": "vs",
+        "path": "./themes/vim-default-color.json"
+      },
+      {
+        "label": "Vim Default (Port) Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/vim-default-color-dark.json"
+      },
+      {
+        "label": "Vim Default (6-Color)",
+        "uiTheme": "vs",
+        "path": "./themes/vim-default-6color.json"
+      },
+      {
+        "label": "Vim Default (6-Color) Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/vim-default-6color-dark.json"
+      }
+    ]
+  },
+  "keywords": [
+    "theme",
+    "color-theme",
+    "vim",
+    "default",
+    "colorscheme",
+    "classic",
+    "6color",
+    "vscode-theme"
+  ]
+}
