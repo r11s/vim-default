@@ -98,9 +98,6 @@ Vim simply reuses the same highlighting logic — it only swaps the **Normal** c
 
 All syntax groups (blue, green, magenta, cyan, red) stay identical.
 
-Because of this, **Vim Default (Port) Dark** in VS Code appears visually close to VS Code’s own *Dark+* theme.
-That’s not a coincidence — both follow the same minimalist principle:
-
 > “keep the colors, only invert the background.”
 
 This dark variant preserves the **authentic gVim behavior**,
