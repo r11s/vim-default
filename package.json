@@ -17,12 +17,12 @@
   "license": "Vim License",
   "repository": {
     "type": "git",
-    "url": "https://github.com/r11s/vim-default-vscode.git"
+    "url": "https://github.com/r11s/vim-default.git"
   },
   "bugs": {
-    "url": "https://github.com/r11s/vim-default-vscode/issues"
+    "url": "https://github.com/r11s/vim-default/issues"
   },
-  "homepage": "https://github.com/r11s/vim-default-vscode",
+  "homepage": "https://github.com/r11s/vim-default",
   "qna": "marketplace",
   "contributes": {
     "themes": [

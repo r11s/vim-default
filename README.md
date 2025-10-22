@@ -124,6 +124,10 @@ To match Vim’s clean, distraction-free look:
 
 These settings remove additional semantic layers and restore the simplicity that defines Vim’s visual style.
 
+> 💡 Note: These settings are not applied automatically.
+> To achieve the authentic Vim look, copy them into your
+> VS Code `settings.json` (Preferences → Settings → Open JSON).
+
 ---
 
 ## ⚖️ License
