@@ -1,6 +1,6 @@
 # Vim Default (Port + 6-Color + Dark Variants)
 
-A faithful recreation of Vim’s built-in **“default”** colorscheme — available in four authentic variants:
+A faithful recreation of Vim’s built-in **“default”** colorscheme — available in four authentic variants and two optional *gVim-inspired* brown variants:
 
 * **Vim Default (Port)** – a pure minimalist translation of Vim’s `default.vim`
   → defines no explicit colors, deferring entirely to the editor or terminal palette.
@@ -13,6 +13,13 @@ A faithful recreation of Vim’s built-in **“default”** colorscheme — avai
 
 * **Vim Default (6-Color) Dark** – the nostalgic 6-color palette with a dark background
   → same color relationships, optimized for low-light use.
+  
+* **Vim Default (6-Color Brown)** 🟤 – a gVim-authentic variation
+  → identical to 6-Color, but with *brown* keywords (`#804000`) inspired by gVim’s GUI default.
+
+* **Vim Default (6-Color Brown Dark)** 🟤 – dark companion to the above
+  → preserves the same brown-keyword palette on a black background.
+
 
 ---
 
@@ -35,6 +42,9 @@ Once installed, open the **Command Palette → Preferences: Color Theme** and ch
 * `Vim Default (Port) Dark`
 * `Vim Default (6-Color)`
 * `Vim Default (6-Color) Dark`
+* `Vim Default (6-Color Brown)`
+* `Vim Default (6-Color Brown Dark)`
+
 
 ### 2️⃣ Manual Installation (Local VSIX)
 
@@ -80,6 +90,16 @@ However, this theme reproduces the **visual intent** of Vim’s default palette 
 The goal isn’t to imitate Vim pixel-for-pixel, but to recreate the **same visual feeling and focus cues** that longtime Vim users intuitively recognize.
 
 ---
+
+## 🟤 The Brown Variants
+
+These two additions reinterpret Vim’s classic *gVim look* with **warm brown keywords** and a more natural contrast on light and dark backgrounds.  They preserve the simplicity of Vim’s default palette, but with improved readability and balance for modern editors.
+
+| Group        | Color                                          | Example               |
+| ------------ | ---------------------------------------------- | --------------------- |
+| **Keyword**  | Brown (`#C08040` on dark · `#804000` on light) | `if`, `for`, `return` |
+| **String**   | Green (`#008000` / `#98C379`)                  | `"text"`              |
+| **Constant** | Magenta (`#FF00FF` / `#C678DD`)                | `PI`, `42`            |
 
 ## 🌒 About “Vim Default (Port) Dark”
 
