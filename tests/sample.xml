@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config PUBLIC "-//Test//DTD Config 1.0//EN" "config.dtd">
+<!-- Kommentar -->
+<config xmlns="urn:test" xmlns:x="urn:x" version="1.0">
+  <item id="1" x:flag="true">Text &amp; Entity &#169;</item>
+  <item id="2"><![CDATA[ rohe <Daten> ]]></item>
+  <empty/>
+</config>

@@ -1,6 +1,6 @@
 # Vim Default (Port + 6-Color + Dark Variants)
 
-A faithful recreation of Vim’s built-in **“default”** colorscheme — available in four authentic variants and two optional *gVim-inspired* brown variants:
+A faithful recreation of Vim’s built-in **“default”** colorscheme — available in six variants, including two that follow gVim’s real default colors:
 
 * **Vim Default (Port)** – a pure minimalist translation of Vim’s `default.vim`
   → defines no explicit colors, deferring entirely to the editor or terminal palette.
@@ -14,26 +14,26 @@ A faithful recreation of Vim’s built-in **“default”** colorscheme — avai
 * **Vim Default (6-Color) Dark** – the nostalgic 6-color palette with a dark background
   → same color relationships, optimized for low-light use.
   
-* **Vim Default (6-Color Brown)** 🟤 – a gVim-authentic variation
-  → identical to 6-Color, but with *brown* keywords (`#804000`) inspired by gVim’s GUI default.
+* **Vim Default (6-Color Brown)** 🟤 – the closest match to gVim’s default colorscheme
+  → brown keywords, magenta strings and numbers, sea-green types, teal built-in functions. The colors were taken from Vim 9.1 (`:highlight`).
 
-* **Vim Default (6-Color Brown Dark)** 🟤 – dark companion to the above
-  → preserves the same brown-keyword palette on a black background.
+* **Vim Default (6-Color Brown Dark)** 🟤 – the same for `:set background=dark`
+  → gVim’s dark palette (yellow keywords, light-green types, light-red constants) on black.
 
 
 ---
 
 ## 🧩 Installation
 
-You can install **Vim Default (Port + 6-Color)** in two ways:
+Works with **Visual Studio Code** and **VSCodium** (the latter via Open VSX). You can install **Vim Default (Port + 6-Color)** in two ways:
 
-### 1️⃣ From the VS Code Marketplace
+### 1️⃣ From the Marketplace (VS Code) or Open VSX (VSCodium)
 
 Search directly inside VS Code:
 
 > **Vim Default (Port + 6-Color)** by **r11s**
 
-or visit the Marketplace page:
+or visit the Marketplace page (VSCodium has Open VSX built in, search for the same name):
 🔗 [https://marketplace.visualstudio.com/items?itemName=r11s.vim-default](https://marketplace.visualstudio.com/items?itemName=r11s.vim-default)
 
 Once installed, open the **Command Palette → Preferences: Color Theme** and choose one of:
@@ -93,13 +93,29 @@ The goal isn’t to imitate Vim pixel-for-pixel, but to recreate the **same visu
 
 ## 🟤 The Brown Variants
 
-These two additions reinterpret Vim’s classic *gVim look* with **warm brown keywords** and a more natural contrast on light and dark backgrounds.  They preserve the simplicity of Vim’s default palette, but with improved readability and balance for modern editors.
+These two variants follow the **real colors of gVim’s default colorscheme**, read from Vim 9.1 with `:highlight`. Vim names the groups; the theme maps TextMate scopes onto them.
 
-| Group        | Color                                          | Example               |
-| ------------ | ---------------------------------------------- | --------------------- |
-| **Keyword**  | Brown (`#C08040` on dark · `#804000` on light) | `if`, `for`, `return` |
-| **String**   | Green (`#008000` / `#98C379`)                  | `"text"`              |
-| **Constant** | Magenta (`#FF00FF` / `#C678DD`)                | `PI`, `42`            |
+| Vim group (style)  | Light     | Dark      | Examples                                  |
+| ------------------ | --------- | --------- | ----------------------------------------- |
+| **Statement** bold | `#a52a2a` | `#ffff60` | `if`, `for`, `func`, `return`             |
+| **Constant**       | `#ff00ff` | `#ffa0a0` | strings, numbers, `true`                  |
+| **Special**        | `#6a5acd` | `#ffa500` | escapes such as `\t`, placeholders `%d`   |
+| **Type** bold      | `#2e8b57` | `#60ff60` | `int`, `float64`, `public`, `static`      |
+| **Identifier**     | `#008b8b` | `#40ffff` | built-ins such as `make`, `len`           |
+| **PreProc**        | `#6a0dad` | `#ff80ff` | Python `import`, `@Override`, `#include`  |
+| **Comment**        | `#0000ff` | `#80a0ff` | comments                                  |
+
+Normal text is black on white (light) and white on black (dark). Operators, function names and brackets stay plain, as in Vim. The current line uses Vim’s `CursorLine` colors (`#e5e5e5` light, `#666666` dark), like gVim with `:set cursorline`.
+
+### Differences from gVim
+
+Go, Java and Python were compared token by token with gVim; Go matches completely. What remains different:
+
+* Java: Vim colors the first sentence of a Javadoc comment like a special (`#6a5acd`). Unicode escapes such as `\u00e9` are only partly recognized by the TextMate grammar.
+* Python: Vim colors a few names such as `None` in a function signature differently.
+* JavaScript: Vim paints curly braces teal. This theme keeps them plain.
+* C, JavaScript and Ruby were checked only roughly. Ruby follows the generic rules and differs from Vim in several places (for example `def` and `end`).
+* There are no italics, no indent guides and no colored bracket pairs, as in Vim.
 
 ## 🌒 About “Vim Default (Port) Dark”
 
@@ -127,23 +143,57 @@ so it feels natural to anyone accustomed to `:set background=dark` in classic Vi
 
 ## ⚙️ Recommended Settings
 
-To match Vim’s clean, distraction-free look:
+The two **Brown** variants already switch off colored bracket pairs, indent guides and word highlighting. They need no extra settings.
+
+For **Port** and **6-Color** add these to match Vim’s clean look:
 
 ```jsonc
-{
-  "editor.semanticHighlighting.enabled": false,
-  "editor.bracketPairColorization.enabled": false,
-  "editor.guides.bracketPairs": false,
-  "editor.renderWhitespace": "none",
-  "editor.cursorBlinking": "solid"
+"editor.bracketPairColorization.enabled": false,
+"editor.guides.indentation": false,
+"editor.occurrencesHighlight": "off"
+```
+
+> 💡 Note: These settings are not applied automatically, and VS Code cannot limit them to one theme. They apply to every theme you use. Copy them into your `settings.json` (Preferences → Settings → Open JSON) between the existing braces.
+
+---
+
+## 🎛 Customizing
+
+Every color can be changed without editing the theme. Example for the light Brown variant:
+
+```jsonc
+"editor.tokenColorCustomizations": {
+  "[Vim Default (6-Color Brown)]": {
+    "comments": "#0000cc",
+    "strings": "#cc00cc"
+  }
+},
+"workbench.colorCustomizations": {
+  "[Vim Default (6-Color Brown)]": {
+    "editor.background": "#fafaf5"
+  }
 }
 ```
 
-These settings remove additional semantic layers and restore the simplicity that defines Vim’s visual style.
+In the Command Palette, **Developer: Inspect Editor Tokens and Scopes** shows which scope or color applies to the text under the cursor.
 
-> 💡 Note: These settings are not applied automatically.
-> To achieve the authentic Vim look, copy them into your
-> VS Code `settings.json` (Preferences → Settings → Open JSON).
+---
+
+## 🧪 Test files
+
+The repository contains short sample files in `tests/` (about 40 lines each) so you can check the themes in your own languages: Java, Go, Python, Ruby, C, C++, JavaScript, Kotlin, Pascal, COBOL, HTML (with CSS and JavaScript) and XML. Each file uses the same elements: comments, numbers, strings with escapes, type and function declarations, control flow and constants.
+
+* To see only the TextMate colors that everyone gets, set `"editor.semanticHighlighting.enabled": false`. These themes define no semantic colors, so a language server does not change them.
+* VS Code has no built-in grammar for Kotlin, Pascal and COBOL. Install an extension that provides one, otherwise these files show as plain text:
+
+  | Language | Extension ID              | Provides                              |
+  | -------- | ------------------------- | ------------------------------------- |
+  | Kotlin   | `mathiasfrohlich.Kotlin`  | syntax highlighting only              |
+  | Kotlin   | `JetBrains.kotlin-server` | language server (Kotlin by JetBrains) |
+  | Pascal   | `alefragnani.pascal`      | syntax highlighting                   |
+  | COBOL    | `bitlang.cobol`           | syntax highlighting                   |
+
+  The colors in these languages depend on the scopes the extension’s grammar provides. On VSCodium the extensions are available only if they are published on Open VSX.
 
 ---
 
