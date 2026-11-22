@@ -2,7 +2,7 @@
   "name": "vim-default",
   "displayName": "Vim Default (Port + 6-Color)",
   "description": "Faithful ports of Vim's built-in 'default' colorscheme — both the pure version (no colors defined) and a 6-color variant matching classic Vim syntax colors.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "publisher": "r11s",
   "engines": {
     "vscode": "^1.80.0"
@@ -27,7 +27,7 @@
     "url": "https://github.com/r11s/vim-default/issues"
   },
   "homepage": "https://github.com/r11s/vim-default",
-  "qna": "marketplace",
+  "qna": "https://github.com/r11s/vim-default/issues",
   "contributes": {
     "themes": [
       {

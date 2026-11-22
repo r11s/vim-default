@@ -25,16 +25,18 @@ A faithful recreation of Vim’s built-in **“default”** colorscheme — avai
 
 ## 🧩 Installation
 
-Works with **Visual Studio Code** and **VSCodium** (the latter via Open VSX). You can install **Vim Default (Port + 6-Color)** in two ways:
+Works with **Visual Studio Code** and **VSCodium**. You can install **Vim Default (Port + 6-Color)** in two ways:
 
-### 1️⃣ From the Marketplace (VS Code) or Open VSX (VSCodium)
+### 1️⃣ From the Extensions view
 
-Search directly inside VS Code:
+Search in the Extensions view:
 
 > **Vim Default (Port + 6-Color)** by **r11s**
 
-or visit the Marketplace page (VSCodium has Open VSX built in, search for the same name):
-🔗 [https://marketplace.visualstudio.com/items?itemName=r11s.vim-default](https://marketplace.visualstudio.com/items?itemName=r11s.vim-default)
+or open the page directly:
+
+* VS Code: 🔗 [https://marketplace.visualstudio.com/items?itemName=r11s.vim-default](https://marketplace.visualstudio.com/items?itemName=r11s.vim-default)
+* VSCodium: 🔗 [https://open-vsx.org/extension/r11s/vim-default](https://open-vsx.org/extension/r11s/vim-default)
 
 Once installed, open the **Command Palette → Preferences: Color Theme** and choose one of:
 
@@ -53,7 +55,7 @@ If you built or downloaded the `.vsix` file manually:
 1. Open the **Command Palette** (`Ctrl+Shift+P` / `Cmd+Shift+P` on macOS).
 2. Run **“Extensions: Install from VSIX...”**
 3. Select your `vim-default-<version>.vsix` file.
-4. Restart VS Code — done ✅
+4. Restart the editor — done ✅
 
 ---
 
@@ -61,7 +63,7 @@ If you built or downloaded the `.vsix` file manually:
 
 Vim’s original `default.vim` doesn’t actually assign colors — it simply clears existing highlights, resets syntax, and leaves color decisions to your environment (`syncolor.vim`, terminal, or GUI).
 
-This port embraces that minimalism but adapts it to the world of VS Code.
+This port embraces that minimalism but adapts it to VS Code and VSCodium.
 
 ### ✳️ Why a 1 : 1 mapping isn’t possible
 
@@ -148,12 +150,25 @@ The two **Brown** variants already switch off colored bracket pairs, indent guid
 For **Port** and **6-Color** add these to match Vim’s clean look:
 
 ```jsonc
+// No colored bracket pairs (Vim has none)
 "editor.bracketPairColorization.enabled": false,
+// No vertical indent guides
 "editor.guides.indentation": false,
+// Do not highlight other occurrences of the word under the cursor
 "editor.occurrencesHighlight": "off"
 ```
 
-> 💡 Note: These settings are not applied automatically, and VS Code cannot limit them to one theme. They apply to every theme you use. Copy them into your `settings.json` (Preferences → Settings → Open JSON) between the existing braces.
+For **all variants**, keep language servers from restyling the colors:
+
+```jsonc
+// Language servers (gopls, etc.) would replace the theme's colors for
+// operators, types and functions with colors Vim does not use
+"editor.semanticHighlighting.enabled": false
+```
+
+> 💡 Note: These settings are not applied automatically, and the editor cannot limit them to one theme. They apply to every theme you use. Copy them into your `settings.json` (Preferences → Settings → Open JSON) between the existing braces.
+
+**What is semantic highlighting?** VS Code and VSCodium color code in two steps. First the theme’s text patterns (TextMate scopes) color keywords, strings and so on, like Vim’s syntax files do. On top of that, a language server (gopls for Go, Pylance for Python, the Java and Kotlin extensions) can report what each name really is, such as a type, a parameter or a function, and the editor colors it accordingly. That is more precise, but these colors replace the ones from the theme’s patterns. Vim has no such step, so these themes are built without it. By default it is off for them. It is only active if you have set `"editor.semanticHighlighting.enabled": true` yourself, and then it applies to all themes.
 
 ---
 
@@ -183,8 +198,8 @@ In the Command Palette, **Developer: Inspect Editor Tokens and Scopes** shows wh
 
 The repository contains short sample files in `tests/` (about 40 lines each) so you can check the themes in your own languages: Java, Go, Python, Ruby, C, C++, JavaScript, Kotlin, Pascal, COBOL, HTML (with CSS and JavaScript) and XML. Each file uses the same elements: comments, numbers, strings with escapes, type and function declarations, control flow and constants.
 
-* To see only the TextMate colors that everyone gets, set `"editor.semanticHighlighting.enabled": false`. These themes define no semantic colors, so a language server does not change them.
-* VS Code has no built-in grammar for Kotlin, Pascal and COBOL. Install an extension that provides one, otherwise these files show as plain text:
+* The themes are made for TextMate colors only, and the editor does not apply language-server colors to them by default. If you have set `"editor.semanticHighlighting.enabled": true`, a language server such as gopls restyles operators, types and functions, and the colors no longer match Vim. Set it to `false` to see the real theme colors.
+* VS Code and VSCodium have no built-in grammar for Kotlin, Pascal and COBOL. Install an extension that provides one, otherwise these files show as plain text:
 
   | Language | Extension ID              | Provides                              |
   | -------- | ------------------------- | ------------------------------------- |
@@ -197,6 +212,20 @@ The repository contains short sample files in `tests/` (about 40 lines each) so 
 
 ---
 
+## 📝 Changes
+
+### 1.1.1
+
+* README: wording for both VS Code and VSCodium, links to both marketplaces, commented settings and an explanation of semantic highlighting.
+
+### 1.1.0
+
+* The Brown variants follow the real default colors of gVim (Vim 9.1), including the grey current-line bar.
+* Sample files for twelve languages added in `tests/`.
+* README rewritten: color table, differences from gVim, recommended settings, customizing.
+
+---
+
 ## ⚖️ License
 
 Licensed under the [Vim License](https://github.com/vim/vim/blob/master/LICENSE).
@@ -206,6 +235,6 @@ All trademarks and copyrights remain with their respective owners.
 
 ## 🛠 Maintainers
 
-* **Ported by:** Rainer S. (@r11s)
+* **Ported by:** Rainer Strauss (@r11s)
 * **Original Vim authors:** Bram Moolenaar and the Vim Project
 * **Inspiration:** The timeless simplicity of Vim’s `default.vim`
