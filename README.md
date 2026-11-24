@@ -214,6 +214,10 @@ The repository contains short sample files in `tests/` (about 40 lines each) so 
 
 ## 📝 Changes
 
+### 1.1.2
+
+* New extension icon (256 × 256 px).
+
 ### 1.1.1
 
 * README: wording for both VS Code and VSCodium, links to both marketplaces, commented settings and an explanation of semantic highlighting.
